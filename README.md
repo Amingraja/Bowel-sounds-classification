@@ -28,38 +28,59 @@ Clone the repository and install dependencies:
 ```bash
 git clone https://github.com/yourusername/bowel-sound-classification.git
 cd bowel-sound-classification
-pip install -r requirements.txt
+pip install -e .
 ````
+
+The training and validation data should be placed in the corresponding folders under `data/raw`.  
+Note that each audio file must have a matching `.txt` file with the same name.
 
 
 ## Usage
 
-### 1. Training
+### 1. Data Preparation
+
+To prepare data for bowel sound classification:
+
+```bash
+python src/data/prepare_data.py
+```
+
+### This will:
+
+- Load the dataset defined in `config.yaml`.
+- Apply smoothness duration on subaudios.
+- Balance train and validation datasets.
+- Perform train/validation/test split.  
+
+### 2. Training & Evaluation
 
 To fine-tune a model (or an ensemble of models):
 
 ```bash
-python train.py 
+python src/train/train_evaluate.py
 ```
 ### This will:
-
-- Load the dataset defined in `config.yaml`.  
-- Perform train/validation/test split.  
+ 
 - Fine-tune each model (or ensemble).  
 - Save the best model checkpoint and logs in `./results`.
 
-## 2. Inference & Evaluation
+## 2. Model deployment
 
-To run inference on test audio and compare with ground truth:
+- The model is deployed using **FastAPI**.  
+- After training, the best checkpoint should be saved in `deployment/models`.
+
+To run deployment :
 
 ```bash
-python inference.py
+python deployment/run.py
 ```
 ### This will:
 
 - Load the trained model(s).
-- Perform sliding-window multi-event prediction.  
-- Merge consecutive predictions of the same class. 
-- Evaluate predictions against ground-truth `.txt`.
-- Compute IoU-based matching with metrics: precision, recall, F1-score.
-- Save a detailed CSV report and confusion matrix plots.
+- Perform sliding-window multi-event prediction to detect audio class start and end timestamp.  
+- Merge consecutive predictions of the same class.
+
+
+## Results 
+
+

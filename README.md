@@ -87,7 +87,7 @@ The following section provides an overview of the model's performance.
 (Example shown using **`microsoft/wavlm-base`** after 7 epochs of training.)
 
 ### Confusion Matrix (Validation)  
-![Confusion Matrix](final_results/confusion_matrix.png)
+![Confusion Matrix](final_result/confusion_matrix.png)
 
 ### Metrics  
 

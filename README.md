@@ -81,6 +81,32 @@ python deployment/run.py
 - Merge consecutive predictions of the same class.
 
 
-## Results 
+## Model Performance Overview  
+
+The following section provides an overview of the model's performance.  
+(Example shown using **`microsoft/wavlm-base`** after 7 epochs of training.)
+
+### Confusion Matrix (Validation)  
+![Confusion Matrix](path/to/confusion_matrix.png)
+
+### Metrics  
+
+#### Per-class metrics  
+
+| Class | F1 Score | Precision |
+|-------|----------|-----------|
+| crs   | 0.8214   | 0.8846    |
+| h     | 0.9298   | 0.9815    |
+| mb    | 0.8296   | 0.7467    |
+| sb    | 0.7563   | 0.7627    |
+
+#### Overall metrics  
+
+| Metric      | Value |
+|-------------|-------|
+| Accuracy    | 0.85  |
+| Macro F1    | 0.83  |
+| Weighted F1 | 0.86  |
+
 
 

@@ -11,6 +11,14 @@ It supports **single-model fine-tuning** as well as **ensemble learning** across
 - **Input**
   - Raw audio files (`.wav`) containing bowel sound recordings.
   - Ground-truth `.txt` files with start time, end time, and label of each sub-audio segment.
+- **Labels**
+
+| Label | Description |
+|:------|:-------------|
+| `sb`  | Single burst bowel sound |
+| `mb`  | Multiple burst bowel sound |
+| `h`   | Harmonic bowel sound |
+| `crs` | Continuous random sound (including **noise `n`** and **voice `v`**) |
 
 - **Pipeline Features**
   - Fine-tuning of multiple Hugging Face models (e.g., HuBERT, Wav2Vec2, WavLM).

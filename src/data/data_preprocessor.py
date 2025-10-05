@@ -88,7 +88,7 @@ class DataPreprocessor:
 
         csv_path = os.path.join(output_folder, "segments.csv")
         pd.DataFrame(all_rows).to_csv(csv_path, index=False)
-        print(f"✅ CSV saved at: {csv_path}")
+        print(f"CSV saved at: {csv_path}")
         return pd.DataFrame(all_rows)
     
     @staticmethod
@@ -104,6 +104,7 @@ class DataPreprocessor:
                 audio_np = np.zeros(int(16000 * min_duration), dtype=np.float32)
             batch['speech'] = audio_np
         except Exception as e:
-            print(f"⚠️ Could not load {audio_path}: {e}")
+            print(f"Could not load {audio_path}: {e}")
             batch['speech'] = np.zeros(int(16000 * min_duration), dtype=np.float32)
         return batch
+

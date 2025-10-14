@@ -58,7 +58,7 @@ class DataPreprocessor:
             audio_candidates = [f for f in os.listdir(input_folder)
                                 if f.startswith(base_name) and f.lower().endswith(('.wav', '.mp3', '.flac'))]
             if not audio_candidates:
-                print(f"⚠️ Skipping {base_name}, no matching audio found.")
+                print(f"Skipping {base_name}, no matching audio found.")
                 continue
             audio_file = os.path.join(input_folder, audio_candidates[0])
 
@@ -107,4 +107,5 @@ class DataPreprocessor:
             print(f"Could not load {audio_path}: {e}")
             batch['speech'] = np.zeros(int(16000 * min_duration), dtype=np.float32)
         return batch
+
 
